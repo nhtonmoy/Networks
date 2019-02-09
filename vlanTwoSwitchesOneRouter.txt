@@ -1,0 +1,77 @@
+Sat Feb 9 22:00:02 2019   Switch0   Switch>en
+Sat Feb 9 22:00:15 2019   Switch0   Switch#conf t
+Sat Feb 9 22:00:23 2019   Switch0   Switch(config)#vlan 10
+Sat Feb 9 22:00:39 2019   Switch0   Switch(config-vlan)#name IT
+Sat Feb 9 22:00:41 2019   Switch0   Switch(config-vlan)#exit
+Sat Feb 9 22:00:46 2019   Switch0   Switch(config)#vlan 20
+Sat Feb 9 22:01:01 2019   Switch0   Switch(config-vlan)#name Marketing
+Sat Feb 9 22:01:03 2019   Switch0   Switch(config-vlan)#exit
+Sat Feb 9 22:02:05 2019   Switch0   Switch(config)#int fa0/1
+Sat Feb 9 22:02:12 2019   Switch0   Switch(config-if)#switchport mode access
+Sat Feb 9 22:02:21 2019   Switch0   Switch(config-if)#switchport access vlan 10
+Sat Feb 9 22:02:23 2019   Switch0   Switch(config-if)#exit
+Sat Feb 9 22:02:25 2019   Switch0   Switch(config)#int fa0/2
+Sat Feb 9 22:02:28 2019   Switch0   Switch(config-if)#switchport mode access
+Sat Feb 9 22:02:31 2019   Switch0   Switch(config-if)#switchport access vlan 10
+Sat Feb 9 22:02:33 2019   Switch0   Switch(config-if)#exit
+Sat Feb 9 22:02:38 2019   Switch0   Switch(config)#int fa0/5
+Sat Feb 9 22:02:41 2019   Switch0   Switch(config-if)#switchport mode access
+Sat Feb 9 22:02:45 2019   Switch0   Switch(config-if)#switchport access vlan 20
+Sat Feb 9 22:02:47 2019   Switch0   Switch(config-if)#exit
+Sat Feb 9 22:02:50 2019   Switch0   Switch(config)#int fa0/6
+Sat Feb 9 22:02:51 2019   Switch0   Switch(config-if)#switchport mode access
+Sat Feb 9 22:02:55 2019   Switch0   Switch(config-if)#switchport access vlan 30
+Sat Feb 9 22:03:04 2019   Switch0   Switch(config-if)#switchport access vlan 20
+Sat Feb 9 22:03:07 2019   Switch0   Switch(config-if)#exit
+Sat Feb 9 22:03:39 2019   Switch1   Switch>en
+Sat Feb 9 22:03:42 2019   Switch1   Switch#conf t
+Sat Feb 9 22:03:47 2019   Switch1   Switch(config)#vlan 10
+Sat Feb 9 22:03:54 2019   Switch1   Switch(config-vlan)#exit
+Sat Feb 9 22:03:58 2019   Switch1   Switch(config)#vlan 30
+Sat Feb 9 22:04:06 2019   Switch1   Switch(config-vlan)#name Accounts
+Sat Feb 9 22:04:12 2019   Switch1   Switch(config-vlan)#exit
+Sat Feb 9 22:04:22 2019   Switch1   Switch(config)#int fa0/1
+Sat Feb 9 22:04:29 2019   Switch1   Switch(config-if)#switchport mode access
+Sat Feb 9 22:04:37 2019   Switch1   Switch(config-if)#switchport access vlan 30
+Sat Feb 9 22:04:39 2019   Switch1   Switch(config-if)#exit
+Sat Feb 9 22:04:41 2019   Switch1   Switch(config)#int fa0/2
+Sat Feb 9 22:04:43 2019   Switch1   Switch(config-if)#switchport mode access
+Sat Feb 9 22:04:45 2019   Switch1   Switch(config-if)#switchport access vlan 30
+Sat Feb 9 22:04:47 2019   Switch1   Switch(config-if)#exit
+Sat Feb 9 22:06:26 2019   Router0   Router>en
+Sat Feb 9 22:06:28 2019   Router0   Router#conf t
+Sat Feb 9 22:06:44 2019   Router0   Router(config)#int fa0/0
+Sat Feb 9 22:06:50 2019   Router0   Router(config-if)#no sh
+Sat Feb 9 22:06:57 2019   Router0   Router(config-if)#exit
+Sat Feb 9 22:07:42 2019   Router0   Router(config)#int fa0/0.10
+Sat Feb 9 22:14:02 2019   Router0   Router(config-subif)#encapsulation dot 1Q 10
+Sat Feb 9 22:14:41 2019   Router0   Router(config-subif)#exit
+Sat Feb 9 22:14:46 2019   Router0   Router(config)#int fa0/0.20
+Sat Feb 9 22:14:54 2019   Router0   Router(config-subif)#no sh
+Sat Feb 9 22:15:19 2019   Router0   Router(config-subif)#exit
+Sat Feb 9 22:15:24 2019   Router0   Router(config)#int fa0/0.10
+Sat Feb 9 22:15:31 2019   Router0   Router(config-subif)#encapsulation dot1Q 10
+Sat Feb 9 22:16:20 2019   Router0   Router(config-subif)#ip address 172.16.0.1 255.255.224.0
+Sat Feb 9 22:16:26 2019   Router0   Router(config-subif)#exit
+Sat Feb 9 22:16:31 2019   Router0   Router(config)#int fa0/0.20
+Sat Feb 9 22:16:35 2019   Router0   Router(config-subif)#encapsulation dot1Q 20
+Sat Feb 9 22:16:51 2019   Router0   Router(config-subif)#ip address 172.16.32.1 255.255.240.0
+Sat Feb 9 22:16:55 2019   Router0   Router(config-subif)#exit
+Sat Feb 9 22:16:59 2019   Router0   Router(config)#int fa0/0.30
+Sat Feb 9 22:17:03 2019   Router0   Router(config-subif)#no sh
+Sat Feb 9 22:17:09 2019   Router0   Router(config-subif)#encapsulation dot1Q 30
+Sat Feb 9 22:17:24 2019   Router0   Router(config-subif)#ip address 172.16.48.1 255.255.252.0
+Sat Feb 9 22:17:45 2019   Router0   Router(config-subif)#exit
+Sat Feb 9 22:18:01 2019   Switch0   Switch>en
+Sat Feb 9 22:18:04 2019   Switch0   Switch#conf t
+Sat Feb 9 22:18:11 2019   Switch0   Switch(config)#int fa0/4
+Sat Feb 9 22:18:42 2019   Switch0   Switch(config-if)#exit
+Sat Feb 9 22:18:51 2019   Switch0   Switch(config)#int fa0/3
+Sat Feb 9 22:19:02 2019   Switch0   Switch(config-if)#switchport mode trunk
+Sat Feb 9 22:19:15 2019   Switch0   Switch(config-if)#switchport trunk allowed vlan all
+Sat Feb 9 22:19:17 2019   Switch0   Switch(config-if)#exit
+Sat Feb 9 22:21:23 2019   Switch0   Switch(config)#en
+Sat Feb 9 22:21:35 2019   Switch0   Switch(config)#int fa0/4
+Sat Feb 9 22:21:37 2019   Switch0   Switch(config-if)#switchport mode trunk
+Sat Feb 9 22:21:42 2019   Switch0   Switch(config-if)#switchport trunk allowed vlan all
+Sat Feb 9 22:21:45 2019   Switch0   Switch(config-if)#exit
